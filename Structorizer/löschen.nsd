@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;löschen(string[] liste, int i, int k)&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+<root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;löschen(string[] liste, int i, int k)&#34;" comment="" color="ffffff" type="program" style="nice">
 	<children>
-		<instruction text="&#34;liste[i] = &#34;&#34;zzzzzzzzzzzzzzzzzzzzzz&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-		<instruction text="&#34;liste.Sort()&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-		<instruction text="&#34;liste.Resize&#60;string&#62;(k-1)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-		<instruction text="&#34;return liste&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;personen[i] = &#34;&#34;zzzzzzzzzzzzzzzzzzzzzz&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;Quicksort(personen, 0, k - 1)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;Array.Resize&#60;string&#62;(personen,k-1)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;return liste&#34;" comment="" color="ffffff" rotated="0"></instruction>
 	</children>
 </root>

@@ -7,24 +7,79 @@ namespace Gruppenersteller
 {
     class Program
     {
+        static string[] personen;
+        static short gruppenanzahl;
+        static int mitgliederanzahl;
 
-        static string[] löschen(string[] personen, int zufall, int anzahl)
+
+        static void Quicksort(IComparable[] elements, int left, int right)
         {
-            return personen;
+            int i = left, j = right;
+            IComparable pivot = elements[(left + right) / 2];
+
+            while (i <= j)
+            {
+                while (elements[i].CompareTo(pivot) < 0)
+                {
+                    i++;
+                }
+
+                while (elements[j].CompareTo(pivot) > 0)
+                {
+                    j--;
+                }
+
+                if (i <= j)
+                {
+                    // Swap
+                    IComparable tmp = elements[i];
+                    elements[i] = elements[j];
+                    elements[j] = tmp;
+
+                    i++;
+                    j--;
+                }
+            }
+
+            // Recursive calls
+            if (left < j)
+            {
+                Quicksort(elements, left, j);
+            }
+
+            if (i < right)
+            {
+                Quicksort(elements, i, right);
+            }
+        }
+        
+
+        static void löschen(int i, int k)
+        {
+            personen[i] = "zzzzzzzzzzzzzzz";
+            Quicksort(personen, 0, k - 1);
+            Array.Resize<string>(ref personen, k - 1);
         }
 
         static string Ausgabe(string[,] gruppen)
         {
             string ausgabe = "";
+            for (int k = 0; k < gruppenanzahl; k++)
+            {
+                ausgabe += "Gruppe " + (k + 1) + ":\n";
+                for (int i = 0; i < mitgliederanzahl; i++)
+                {
+                    ausgabe += gruppen[k, i] + "\n";
+                }
+            }
             return ausgabe;
         }
 
         static void Main(string[] args)
         {
             string eingabe;
-            short gruppenanzahl;
             Console.WriteLine("Es wird versucht die Datei name.txt einzulesen...");
-            string[] personen = Datei.Laden(@".\namen.txt").Split('\n');
+            personen = Datei.Laden(@".\namen.txt").Split('\n');
             if (personen[0] != "")
             {
                 int anzahl = personen.Length;
@@ -35,10 +90,11 @@ namespace Gruppenersteller
                     eingabe = Console.ReadLine();
                 } while (!Int16.TryParse(eingabe, out gruppenanzahl));
 
-                Int32 mitgliederanzahl = anzahl / gruppenanzahl;
+                mitgliederanzahl = anzahl / gruppenanzahl;
                 string[,] gruppen = new string[gruppenanzahl, mitgliederanzahl];
                 Random random = new Random();
                 int i = 0, k = 0;
+                Console.WriteLine("Gruppen werden erstellt...");
                 while (anzahl > 0)
                 {
                     if (i > gruppenanzahl - 1)
@@ -49,9 +105,9 @@ namespace Gruppenersteller
 
                     else
                     {
-                        int zufall = random.Next(-1, anzahl + 1);
+                        int zufall = random.Next(0, anzahl);
                         gruppen[i, k] = personen[zufall];
-                        personen = löschen(personen, zufall, anzahl);
+                        löschen(zufall, anzahl);
                         anzahl--;
                         i++;
                     }
