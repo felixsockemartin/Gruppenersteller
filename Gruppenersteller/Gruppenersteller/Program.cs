@@ -9,6 +9,13 @@ namespace Gruppenersteller
     {
         static void Main(string[] args)
         {
+            string eingabe;
+            short gruppenanzahl;
+            Console.WriteLine("Wie viele Gruppen?");
+            do
+            {
+                eingabe = Console.ReadLine();
+            } while (!Int16.TryParse(eingabe, out gruppenanzahl));
         }
     }
 }
