@@ -1,0 +1,4 @@
+C:\Users\Martin\Documents\GitHub\Gruppenersteller\Gruppenersteller\Gruppenersteller\bin\Debug\Gruppenersteller.exe
+C:\Users\Martin\Documents\GitHub\Gruppenersteller\Gruppenersteller\Gruppenersteller\bin\Debug\Gruppenersteller.pdb
+C:\Users\Martin\Documents\GitHub\Gruppenersteller\Gruppenersteller\Gruppenersteller\obj\x86\Debug\Gruppenersteller.exe
+C:\Users\Martin\Documents\GitHub\Gruppenersteller\Gruppenersteller\Gruppenersteller\obj\x86\Debug\Gruppenersteller.pdb
