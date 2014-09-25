@@ -9,7 +9,7 @@ namespace Gruppenersteller
     {
         static string[] personen;
         static short gruppenanzahl;
-        static int mitgliederanzahl;
+        static decimal mitgliederanzahl;
 
 
         static void Quicksort(IComparable[] elements, int left, int right)
@@ -89,9 +89,15 @@ namespace Gruppenersteller
                     Console.WriteLine("Wie viele Gruppen?");
                     eingabe = Console.ReadLine();
                 } while (!Int16.TryParse(eingabe, out gruppenanzahl));
-
-                mitgliederanzahl = anzahl / gruppenanzahl;
-                string[,] gruppen = new string[gruppenanzahl, mitgliederanzahl];
+                mitgliederanzahl = Convert.ToDecimal(anzahl) / Convert.ToDecimal(gruppenanzahl);
+                decimal runden = mitgliederanzahl;
+                runden = Math.Round(runden);
+                if (mitgliederanzahl > runden)
+                {
+                    runden++;
+                    mitgliederanzahl = runden;
+                }
+                string[,] gruppen = new string[gruppenanzahl, Convert.ToInt32(mitgliederanzahl)];
                 Random random = new Random();
                 int i = 0, k = 0;
                 Console.WriteLine("Gruppen werden erstellt...");
@@ -106,6 +112,8 @@ namespace Gruppenersteller
                     else
                     {
                         int zufall = random.Next(0, anzahl);
+                        //if (k > mitgliederanzahl - 1)
+                        //{ k--; }
                         gruppen[i, k] = personen[zufall];
                         löschen(zufall, anzahl);
                         anzahl--;
