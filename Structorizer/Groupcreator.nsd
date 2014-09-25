@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;Groupcreator&#34;" comment="" color="ffffff" type="program" style="nice">
 	<children>
-		<instruction text="&#34;string-array personen = Datei.Lesen(&#34;&#34;.\namen.txt&#34;&#34;).split('\n')&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-		<alternative text="&#34;schüler[0] != &#34;&#34;&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff">
+		<instruction text="&#34;string-array personen = Datei.Lesen(&#34;&#34;.\namen.txt&#34;&#34;).split('\n')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+		<alternative text="&#34;schüler[0] != &#34;&#34;&#34;&#34;&#34;" comment="" color="ffffff">
 			<qTrue>
-				<instruction text="&#34;int anzahl = personen.Length&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;int anzahl = personen.Length&#34;" comment="" color="ffffff" rotated="0"></instruction>
 				<repeat text="&#34;!Int16.TryParse(eingabe, out gruppenanzahl)&#34;" comment="" color="ffffff">
 					<qRepeat>
 						<instruction text="&#34;Ausgabe &#34;&#34;Wie viele Gruppen?&#34;&#34;&#34;" comment="" color="ffffff" rotated="0"></instruction>
 						<instruction text="&#34;Eingabe gruppenanzahl&#34;" comment="" color="ffffff" rotated="0"></instruction>
 					</qRepeat>
 				</repeat>
-				<instruction text="&#34;int mitgliederanzahl = anzahl/gruppenanzahl&#34;" comment="" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;decimal mitgliederanzahl = Convert.ToDecimal(anzahl) / Convert.ToDecimal(gruppenanzahl)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;decimal runden = mitgliederzahl&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;runden = Math.Round(runden)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<alternative text="&#34;mitgliederanzahl &#62; runden&#34;" comment="&#34;&#34;" color="ffffff">
+					<qTrue>
+						<instruction text="&#34;runden++&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;mitgliederanzahl = runden&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+					</qTrue>
+					<qFalse>
+					</qFalse>
+				</alternative>
 				<instruction text="&#34;string[,] gruppen = new string[gruppenanzahl,mitgliederanzahl]&#34;" comment="" color="ffffff" rotated="0"></instruction>
 				<instruction text="&#34;Random random = new Random()&#34;" comment="" color="ffffff" rotated="0"></instruction>
 				<instruction text="&#34;int i = 0, k = 0&#34;" comment="" color="ffffff" rotated="0"></instruction>
@@ -24,22 +34,22 @@
 							</qTrue>
 							<qFalse>
 								<instruction text="&#34;int zufall = random.Next(-1,anzahl+1)&#34;" comment="" color="ffffff" rotated="0"></instruction>
-								<instruction text="&#34;gruppen[i,k] = personen[zufall]&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-								<instruction text="&#34;personen = löschen(personen, zufall, anzahl)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+								<instruction text="&#34;gruppen[i,k] = personen[zufall]&#34;" comment="" color="ffffff" rotated="0"></instruction>
+								<instruction text="&#34;personen = löschen(personen, zufall, anzahl)&#34;" comment="" color="ffffff" rotated="0"></instruction>
 								<instruction text="&#34;anzahl--;&#34;" comment="" color="ffffff" rotated="0"></instruction>
 								<instruction text="&#34;i++&#34;" comment="" color="ffffff" rotated="0"></instruction>
 							</qFalse>
 						</alternative>
 					</qWhile>
 				</while>
-				<instruction text="&#34;string ausgabe = Ausgabe(gruppen)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;string ausgabe = Ausgabe(gruppen)&#34;" comment="" color="ffffff" rotated="0"></instruction>
 				<instruction text="&#34;Datei.Schreiben(&#34;&#34;.\Liste.txt&#34;&#34;, ausgabe)&#34;" comment="" color="ffffff" rotated="0"></instruction>
 				<instruction text="&#34;Ausgabe ausgabe&#34;" comment="" color="ffffff" rotated="0"></instruction>
-				<instruction text="&#34;Auf Tastendruck warten&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;Auf Tastendruck warten&#34;" comment="" color="ffffff" rotated="0"></instruction>
 			</qTrue>
 			<qFalse>
 				<instruction text="&#34;Ausgabe Fehler! Programm wird beendet!&#34;" comment="" color="ffffff" rotated="0"></instruction>
-				<instruction text="&#34;Auf Tastendruck warten&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;Auf Tastendruck warten&#34;" comment="" color="ffffff" rotated="0"></instruction>
 			</qFalse>
 		</alternative>
 	</children>
